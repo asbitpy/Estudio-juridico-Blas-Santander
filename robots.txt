@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://gomezarturosantander-cloud.github.io/sitemap.xml
+Sitemap: https://asbitpy.github.io/Abog.Blas-Santander/sitemap.xml
