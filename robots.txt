@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://asbitpy.github.io/Abog.Blas-Santander/sitemap.xml
+Sitemap: https://asbitpy.github.io/Estudio-juridico-Blas-Santander/sitemap.xml

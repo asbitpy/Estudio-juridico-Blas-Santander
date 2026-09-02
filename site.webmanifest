@@ -1,0 +1,14 @@
+{
+  "name": "Estudio Jurídico Abog. Blas Santander",
+  "short_name": "Abog. Santander",
+  "description": "Asesoría legal en San Lorenzo, Paraguay.",
+  "lang": "es-PY",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0E0F12",
+  "theme_color": "#0E0F12",
+  "icons": [
+    {"src": "assets/img/icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "assets/img/icon-512.png", "sizes": "512x512", "type": "image/png"}
+  ]
+}
