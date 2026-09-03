@@ -11,25 +11,24 @@ URL de publicación actual: `https://asbitpy.github.io/Estudio-juridico-Blas-San
 
 ## Paso 1 · Google Search Console (indexación)
 
-1. Entrar a <https://search.google.com/search-console> con la cuenta del estudio.
-2. Agregar propiedad → **Prefijo de URL** → pegar la URL del sitio.
-3. Elegir **Etiqueta HTML**. Google muestra algo así:
-   `<meta name="google-site-verification" content="AbC123..." />`
-4. Copiar **sólo** el valor de `content` y pegarlo en `tools/build.py`:
+**Ya está verificado por archivo HTML.** En la raíz del repositorio está
+`google6c5e5e1f9976e1d5.html`, que es el método de verificación elegido.
 
-   ```python
-   GSC_TOKEN = "AbC123..."
-   ```
+> ⚠️ **No borrar ese archivo.** Google lo relee cada tanto; si desaparece, se
+> pierde la verificación de la propiedad y con ella el acceso a los datos.
+> `tools/build.py` no lo toca: sólo genera index, 404, sitemap, robots y manifest.
 
-5. Regenerar y publicar:
+Lo que queda por hacer en Search Console:
 
-```bash
-python tools/build.py
-```
+1. Entrar a <https://search.google.com/search-console> con la cuenta del estudio
+   y confirmar la verificación de la propiedad.
+2. En **Sitemaps**, enviar: `sitemap.xml`
+3. En **Inspección de URL**, pegar la portada y pedir **Solicitar indexación**.
+4. A los pocos días, revisar **Páginas** para confirmar que quedó indexada, y
+   **Rendimiento** para ver con qué búsquedas empieza a aparecer.
 
-6. Volver a Search Console → **Verificar**.
-7. En **Sitemaps**, enviar: `sitemap.xml`
-8. En **Inspección de URL**, pedir indexación de la portada.
+Si alguna vez hay que cambiar al método de etiqueta meta, alcanza con poner el
+token en `GSC_TOKEN` dentro de `tools/build.py` y regenerar.
 
 ---
 

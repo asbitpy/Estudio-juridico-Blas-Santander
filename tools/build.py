@@ -72,9 +72,14 @@ ZONAS = [
     "J. Augusto Saldívar", "Villeta", "Nueva Italia", "Asunción",
 ]
 
-# Reemplazar cuando existan las cuentas (ver SEO-GOOGLE.md).
+# Reemplazar cuando exista la cuenta (ver SEO-GOOGLE.md).
 GA4_ID = "G-XXXXXXXXXX"
-GSC_TOKEN = "PEGAR-TOKEN-SEARCH-CONSOLE"
+
+# Search Console está verificado por archivo HTML en la raíz
+# (google6c5e5e1f9976e1d5.html). NO borrar ese archivo: si desaparece,
+# Google pierde la verificación de la propiedad.
+# Este valor queda vacío a propósito; sólo se usa con el método de etiqueta.
+GSC_TOKEN = ""
 
 
 def wa_link(mensaje):
@@ -316,6 +321,11 @@ def head(titulo, descripcion, ruta, jsonld, precarga_hero=False, robots=None):
         '<script type="application/ld+json">\n%s\n</script>' % j.strip() for j in jsonld
     )
 
+    # Sólo se emite si hay token real: un marcador en el HTML no verifica nada
+    # y ensucia el head. La verificación actual es por archivo en la raíz.
+    gsc_meta = ('<meta name="google-site-verification" content="%s">\n' % GSC_TOKEN
+                if GSC_TOKEN else "")
+
     return """<!DOCTYPE html>
 <html lang="es-PY">
 <head>
@@ -328,8 +338,7 @@ def head(titulo, descripcion, ruta, jsonld, precarga_hero=False, robots=None):
 <meta name="geo.region" content="PY-11">
 <meta name="geo.placename" content="%(ciudad)s, %(region)s, Paraguay">
 <meta name="theme-color" content="#0E0F12">
-<meta name="google-site-verification" content="%(gsc)s">
-<link rel="canonical" href="%(canonical)s">
+%(gsc_meta)s<link rel="canonical" href="%(canonical)s">
 <link rel="alternate" hreflang="es-py" href="%(canonical)s">
 <link rel="alternate" hreflang="x-default" href="%(canonical)s">
 
@@ -384,7 +393,7 @@ def head(titulo, descripcion, ruta, jsonld, precarga_hero=False, robots=None):
 <div class="barra-progreso" aria-hidden="true"></div>
 """ % {
         "titulo": titulo, "desc": descripcion, "canonical": canonical, "og": og_img,
-        "gsc": GSC_TOKEN, "jsonld": bloques, "precarga": precarga, "ga4": GA4_ID,
+        "gsc_meta": gsc_meta, "jsonld": bloques, "precarga": precarga, "ga4": GA4_ID,
         "robots": robots, "ciudad": CIUDAD, "region": REGION,
     }
 
