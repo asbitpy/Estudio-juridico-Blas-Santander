@@ -73,7 +73,7 @@ ZONAS = [
 ]
 
 # Reemplazar cuando exista la cuenta (ver SEO-GOOGLE.md).
-GA4_ID = "G-55SBVGDLWS"
+GA4_ID = "G-XXXXXXXXXX"
 
 # Search Console está verificado por archivo HTML en la raíz
 # (google6c5e5e1f9976e1d5.html). NO borrar ese archivo: si desaparece,
